@@ -1,10 +1,6 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:latest'
-            args '-p 3000:3000'
-        }
-    }
+    agent any
+      
     
     stages {
         stage('Checkout Source') {
@@ -13,9 +9,10 @@ pipeline {
            }
         }
         
-        stage('Build') {
+        stage('Build docker-compose') {
             steps {
-                sh 'npm install'
+                sh 'docker compose up -d --no-color --wait'
+                sh 'docker ps -a'
             }
         }
         
