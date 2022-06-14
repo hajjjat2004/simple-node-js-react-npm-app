@@ -12,6 +12,7 @@ pipeline {
             steps {
               
                 sh 'docker ps -a'
+                sh 'docker build -t testapp .'
             }
         }
     }
