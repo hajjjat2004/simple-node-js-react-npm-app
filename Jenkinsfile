@@ -31,7 +31,16 @@ pipeline {
              }
           }
         }
-        
+         stage('start container') {
+              steps{
+                   script { 
+                        sh 'docker run -it --name apptest -d -p 3000:3000 hajjjat2004/nodetest'
+                        
+                   }
+              
+              }
+         
+         }
         
          
     }
